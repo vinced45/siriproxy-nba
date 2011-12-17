@@ -29,9 +29,11 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 	  Thread.new {
 	    doc = Nokogiri::HTML(open("http://m.espn.go.com/nba/scoreboard"))
       	
+      	say "Step 1"
       	games = doc.search('//table[class = "match"]')
       	games.each {
       	|game|
+      	say "Step 2"
       	time = game.xpath("//tr/th/span")
       	@firstTeamName = "CHI"
   		@firstTeamScore = "97"
@@ -40,7 +42,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
   		@timeLeft = time.content
   		}
       	
-      	
+      	say "Step 3"
       	
        	
       if((@firstTeamName == "") || (@secondTeamName == ""))
