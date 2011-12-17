@@ -36,7 +36,6 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
        	
       if((@firstTeamName == "") || (@secondTeamName == ""))
         response = "No games involving the " + userTeam + " were found playing tonight"
-        end
       else 
         response = "The score for the " + userTeam + " game is: " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ")"
 			end  
@@ -52,15 +51,9 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 	end
 	
   def pickOutTeam(phrase)
-    	if(phrase.match(/boston/i) || phrase.match(/celtics/i)) 
+    	 
       		return "Celtics"
-		end
-    	if(phrase.match(/new jersy/i) || phrase.match(/nets/i))
-      		return "Nets"
-    	end
-    	if(phrase.match(/new york/i) || phrase.match(/knicks/i))
-      		return "Knicks"
-    end
+		
     
     
 	end
