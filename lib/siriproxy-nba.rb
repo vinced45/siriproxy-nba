@@ -41,13 +41,13 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
   		secondTeamName = game.xpath("/table/tbody/tr[4]/td/strong").first
   		secondTeamScore = game.xpath("/table/tbody/tr[4]/td[2]").first
   		say "Step 2.75"
-  		@firstTeamName = firstTeamName.text
-  		@firstTeamScore = firstTeamScore.text
-  		@secondTeamName = secondTeamName.text
-  		@secondTeamScore = secondTeamScore.text
-  		@timeLeft = time.text
+  		#@firstTeamName = firstTeamName.text
+  		#@firstTeamScore = firstTeamScore.text
+  		#@secondTeamName = secondTeamName.text
+  		#@secondTeamScore = secondTeamScore.text
+  		#@timeLeft = time.text
   		
-  		say "The score for the " + userTeam + " game is: " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ") with" + @timeLeft + " left."
+  		say "The score for the " + userTeam + " game is: " + firstTeamName + " (" + firstTeamScore + "), " + secondTeamName + " (" + secondTeamScore + ") with" + time + " left."
   		}
       	
       	say "Step 3"
