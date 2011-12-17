@@ -30,17 +30,17 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 	    doc = Nokogiri::HTML(open("http://m.espn.go.com/nba/scoreboard"))
       	
       	say "Step 1"
-      	games = doc.xpath('//*[@class="match"]')
+      	games = doc.xpath("//*[@class=\"match\"]")
       	games.each {
       	|game|
       	say "Step 2"
       	time = game.xpath("/table/tbody/tr/th/span")
-      	
+      	say "Step 2.5"
       	firstTeamName = game.xpath("/table/tbody/tr[3]/td/strong")
   		firstTeamScore = game.xpath("/table/tbody/tr[3]/td[2]")
   		secondTeamName = game.xpath("/table/tbody/tr[4]/td/strong")
   		secondTeamScore = game.xpath("/table/tbody/tr[4]/td[2]")
-  		
+  		say "Step 2.75"
   		@firstTeamName = firstTeamName.content
   		@firstTeamScore = firstTeamScore.content
   		@secondTeamName = secondTeamName.content
