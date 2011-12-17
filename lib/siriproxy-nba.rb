@@ -33,7 +33,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       	
       	
       	
-       }	
+       	
       if((@firstTeamName == "") || (@secondTeamName == ""))
         response = "No games involving the " + userTeam + " were found playing tonight"
       else 
