@@ -8,7 +8,7 @@ require 'nokogiri'
 # Example usage: "What's the score of the Bulls game?"
 #############
 
-class SiriProxy::Plugin::nba < SiriProxy::Plugin
+class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 
   @firstTeamName = ""
   @firstTeamScore = ""
