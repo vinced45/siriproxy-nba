@@ -18,7 +18,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 	
 	def initialize(config)
     #if you have custom configuration options, process them here!
-  end
+    end
   
   listen_for /score of the (.*) game/i do |phrase|
 	  team = pickOutTeam(phrase)
@@ -29,14 +29,14 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 	  Thread.new {
 	    doc = Nokogiri::HTML(open("http://m.espn.go.com/nba/scoreboard"))
       	#games = doc.xpath('div[@id = "scoreboard"]')
-      	games = doc.xpath('table[@class = "match"]')
+      	games = doc.xpath("table[@class = "match"]")
       	
       	games.each { 
       		|game|
-      		@timeLeft = game.xpath('/table/tr/th/span')
-      		@firstTeam = game.xpath('/table/tr/td/strong')
+      		@timeLeft = game.xpath("/table/tr/th/span")
+      		@firstTeam = game.xpath("/table/tr/td/strong")
       		@firstTeamScore = ""
-      		@secondTeam = game.xpath('/table/tr/td/strong')
+      		@secondTeam = game.xpath("/table/tr/td/strong")
       		@secondTeamScore = ""
       	
        }	
