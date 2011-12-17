@@ -34,7 +34,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       	games.each {
       	|game|
       	say "Step 2"
-      	time = game.xpath("//tr/th/span")
+      	time = "4:00" #game.xpath("//tr/th/span")
       	@firstTeamName = "CHI"
   		@firstTeamScore = "97"
   		@secondTeamName = "IND"
