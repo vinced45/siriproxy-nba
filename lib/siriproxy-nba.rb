@@ -85,7 +85,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       return "Warriors"
     elsif(phrase.match(/clippers/i) || phrase.match(/clippers/i))
       return "Clippers"
-    elsif((phrase.match(/lakers/i) || phrase.match(/lakers/i))
+    elsif(phrase.match(/lakers/i) || phrase.match(/lakers/i))
       return "Lakers"
     elsif(phrase.match(/phoenix/i) || phrase.match(/phoenix/i))
       return "Suns"
