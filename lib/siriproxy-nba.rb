@@ -46,15 +46,101 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 			request_completed
 		}
 		
-	  say "Checking to see if the" + userTeam + "played today."
+	  say "Checking to see if the " + userTeam + " played today."
 	  
 	end
 	
   def pickOutTeam(phrase)
-    	 
-      		return "Celtics"
-		
-    
-    
+    if(phrase.match(/boston/i) || phrase.match(/celtics/i)) 
+      return "Celtics"
+	#end
+    if(phrase.match(/new jersy/i) || phrase.match(/nets/i))
+      return "Nets"
+    #end
+    if(phrase.match(/new york/i) || phrase.match(/knicks/i))
+      return "Knicks"
+    #end
+    if(phrase.match(/philadelphia/i) || phrase.match(/76ers/i))
+      return "76ers"
+    #end
+    if(phrase.match(/toronto/i) || phrase.match(/raptors/i))
+      return "Raptors"
+    #end
+    if(phrase.match(/chicago/i) || phrase.match(/bulls/i))
+      return "Bulls"
+    #end
+    if(phrase.match(/cleveland/i) || phrase.match(/cavaliers/i))
+      return "Cavaliers"
+    #end
+    if(phrase.match(/detroit/i) || phrase.match(/pistons/i))
+      return "Pistons"
+    #end
+    if(phrase.match(/indiana/i) || phrase.match(/pacers/i))
+      return "Pacers"
+    #end
+    if(phrase.match(/milwaukee/i) || phrase.match(/bucks/i))
+      return "Bucks"
+    #end
+    if(phrase.match(/atlanta/i) || phrase.match(/hawks/i))
+      return "Hawks"
+    #end
+    if(phrase.match(/charlotte/i) || phrase.match(/bobcats/i))
+      return "Bobcats"
+    #end
+    if(phrase.match(/miami/i) || phrase.match(/heat/i))
+      return "Heat"
+    #end
+    if(phrase.match(/orlando/i) || phrase.match(/magic/i))
+      return "Magic"
+    #end
+    if(phrase.match(/washington/i) || phrase.match(/wizards/i))
+      return "Wizards"
+    #end
+    if(phrase.match(/golden state/i) || phrase.match(/warriors/i))
+      return "Warriors"
+    #end
+    if(phrase.match(/clippers/i) || phrase.match(/clippers/i))
+      return "Clippers"
+    #end
+    if((phrase.match(/lakers/i) || phrase.match(/lakers/i))
+      return "Lakers"
+    #end
+    if(phrase.match(/phoenix/i) || phrase.match(/phoenix/i))
+      return "Suns"
+    #end
+    if(phrase.match(/sacramento/i) || phrase.match(/kings/i))
+      return "Kings"
+    #end
+    if(phrase.match(/dallas/i) || phrase.match(/mavericks/i))
+      return "Mavericks"
+    #end
+    if(phrase.match(/houston/i) || phrase.match(/rockets/i))
+      return "Rockets"
+    #end
+    if(phrase.match(/memphis/i) || phrase.match(/grizzles/i))
+      return "Grizzles"
+    #end
+    if(phrase.match(/new orleans/i) || phrase.match(/hornets/i))
+      return "Hornets"
+    #end
+    if(phrase.match(/san antonio/i) || phrase.match(/spurs/i))
+      return "Spurs"
+    #end
+    if(phrase.match(/denver/i) || phrase.match(/nuggets/i))
+      return "Nuggets"
+    #end
+    if(phrase.match(/minnesota/i) || phrase.match(/timberwolves/i))  
+      return "Timberwolves"
+    #end
+    if(phrase.match(/oklahoma/i) || phrase.match(/thunder/i))
+      return "Thunder"
+    #end
+    if(phrase.match(/portland/i) || phrase.match(/trailblazers/i))
+      return "Trailblazers"
+    #end
+    if(phrase.match(/utah/i) || phrase.match(/jazz/i))
+      return "Jazz"
+    #end
+	
 	end
 end
