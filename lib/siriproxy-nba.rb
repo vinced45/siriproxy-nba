@@ -28,16 +28,10 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 	def score(userTeam)
 	  Thread.new {
 	    doc = Nokogiri::HTML(open("http://m.espn.go.com/nba/scoreboard"))
-      	#games = doc.xpath('div[@id = "scoreboard"]')
+      	
       	games = doc.xpath("/table")
       	
-      	games.each { 
-      		|game|
-      		@timeLeft = game.xpath("/table/tr/th/span")
-      		@firstTeam = game.xpath("/table/tr/td/strong")
-      		@firstTeamScore = ""
-      		@secondTeam = game.xpath("/table/tr/td/strong")
-      		@secondTeamScore = ""
+      	
       	
        }	
       if((@firstTeamName == "") || (@secondTeamName == ""))
