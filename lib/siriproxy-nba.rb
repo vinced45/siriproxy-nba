@@ -29,7 +29,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 	  Thread.new {
 	    doc = Nokogiri::HTML(open("http://m.espn.go.com/nba/scoreboard"))
       	#games = doc.xpath('div[@id = "scoreboard"]')
-      	games = doc.xpath("table[@class = "match"]")
+      	games = doc.xpath("table")
       	
       	games.each { 
       		|game|
