@@ -4,8 +4,8 @@ require 'open-uri'
 require 'nokogiri'
 
 #############
-# This is a plugin for SiriProxy that will allow you to check tonight's hockey scores
-# Example usage: "What's the score of the Avalanche game?"
+# This is a plugin for SiriProxy that will allow you to check tonight's NBA scores
+# Example usage: "What's the score of the Bulls game?"
 #############
 
 class SiriProxy::Plugin::NBA < SiriProxy::Plugin
@@ -31,15 +31,15 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       	#games = doc.xpath('div[@id = "scoreboard"]')
       	games = doc.xpath('table[@class = "match"]')
       	
-      	games.each do 
+      	games.each { 
       		|game|
       		@timeLeft = game.xpath('/table/tr/th/span')
       		@firstTeam = game.xpath('/table/tr/td/strong')
       		@firstTeamScore = ""
       		@secondTeam = game.xpath('/table/tr/td/strong')
       		@secondTeamScore = ""
-      	end
-      		
+      	
+       }	
       if((@firstTeamName == "") || (@secondTeamName == ""))
         response = "No games involving the " + userTeam + " were found playing tonight"
       else 
