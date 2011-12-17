@@ -29,7 +29,16 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 	  Thread.new {
 	    doc = Nokogiri::HTML(open("http://m.espn.go.com/nba/scoreboard"))
       	
-      	games = doc.xpath("/table")
+      	games = doc.search('//table[class = "match"]')
+      	games.each {
+      	|game|
+      	time = game.xpath("//tr/th/span")
+      	@firstTeamName = "CHI"
+  		@firstTeamScore = "97"
+  		@secondTeamName = "IND"
+  		@secondTeamScore = "90"
+  		@timeLeft = time.content
+  		}
       	
       	
       	
@@ -37,7 +46,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       if((@firstTeamName == "") || (@secondTeamName == ""))
         response = "No games involving the " + userTeam + " were found playing tonight"
       else 
-        response = "The score for the " + userTeam + " game is: " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ")"
+        response = "The score for the " + userTeam + " game is: " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ") with" + @timeLeft + " left." 
 			end  
 			@firstTeamName = ""
 			@secondTeamName = ""
