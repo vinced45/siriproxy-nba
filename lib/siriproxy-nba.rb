@@ -34,18 +34,18 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       	games.each {
       	|game|
       	say "Step 2"
-      	time = game.xpath("/table/tbody/tr/th/span")
+      	time = game.xpath("/table/tbody/tr/th/span").first
       	say "Step 2.5"
-      	firstTeamName = game.xpath("/table/tbody/tr[3]/td/strong").first.content.strip
-  		firstTeamScore = game.xpath("/table/tbody/tr[3]/td[2]").first.content.strip
-  		secondTeamName = game.xpath("/table/tbody/tr[4]/td/strong").first.content.strip
-  		secondTeamScore = game.xpath("/table/tbody/tr[4]/td[2]").first.content.strip
+      	firstTeamName = game.xpath("/table/tbody/tr[3]/td/strong").first
+  		firstTeamScore = game.xpath("/table/tbody/tr[3]/td[2]").first
+  		secondTeamName = game.xpath("/table/tbody/tr[4]/td/strong").first
+  		secondTeamScore = game.xpath("/table/tbody/tr[4]/td[2]").first
   		say "Step 2.75"
-  		@firstTeamName = firstTeamName.text
-  		@firstTeamScore = firstTeamScore.text
-  		@secondTeamName = secondTeamName.text
-  		@secondTeamScore = secondTeamScore.text
-  		@timeLeft = time.text
+  		@firstTeamName = firstTeamName.first.content.strip
+  		@firstTeamScore = firstTeamScore.first.content.strip
+  		@secondTeamName = secondTeamName.first.content.strip
+  		@secondTeamScore = secondTeamScore.first.content.strip
+  		@timeLeft = time.first.content.strip
   		
   		say "The score for the " + userTeam + " game is: " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ") with" + @timeLeft + " left."
   		}
