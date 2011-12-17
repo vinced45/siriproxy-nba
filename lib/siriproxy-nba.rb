@@ -31,14 +31,14 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       	#games = doc.xpath('div[@id = "scoreboard"]')
       	games = doc.xpath('table[@class = "match"]')
       	
-      	games.each {
+      	games.each do 
       		|game|
       		@timeLeft = game.xpath('/table/tr/th/span')
       		@firstTeam = game.xpath('/table/tr/td/strong')
       		@firstTeamScore = ""
       		@secondTeam = game.xpath('/table/tr/td/strong')
       		@secondTeamScore = ""
-      	}
+      	end
       		
       if((@firstTeamName == "") || (@secondTeamName == ""))
         response = "No games involving the " + userTeam + " were found playing tonight"
