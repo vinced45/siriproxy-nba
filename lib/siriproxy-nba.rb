@@ -43,7 +43,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       		
       		if firstTemp.include? userTeam
       			say "same"
-      		
+      		end
       			@firstTeamName = firstTemp
       			@secondTeamName = nameFromInt(secondTemp)
       			@firstTeamScore = firstTeam.css("td").last.content.strip
