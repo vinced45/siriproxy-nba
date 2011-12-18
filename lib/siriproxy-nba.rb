@@ -28,7 +28,6 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 	def score(userTeam)
 	  Thread.new {
 	    doc = Nokogiri::HTML(open("http://m.espn.go.com/nba/scoreboard"))
-	    #say "games"
       	games = doc.css(".match")
       	games.each {
       		|game|
@@ -37,17 +36,16 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       		secondTeam = game.css(".competitor").last
       		firstTemp = firstTeam.css("strong").first.content.strip
       		secondTemp = secondTeam.css("strong").first.content.strip
-      	#say "games2"
       		#say "test " + userTeam + " " + @firstTeamName + " " + @firstTeamScore + " " + @secondTeamName + " " + @secondTeamScore + " " + @timeLeft + " "
       	
-      		if ((@teamInt == firstTemp) || (@teamInt == secondTemp))
+      		#if ((@teamInt == firstTemp) || (@teamInt == secondTemp))
       			@firstTeamName = firstTemp
       			@secondTeamName = secondTemp
       			@firstTeamScore = firstTeam.css("td").last.content.strip
       			@secondTeamScore = secondTeam.css("td").last.content.strip
-      			say "games2"
-      			break
-      			end
+      		#	say "games2"
+      		#	break
+      		#	end
       	} 
       	
       if((@firstTeamName == "") || (@secondTeamName == ""))
