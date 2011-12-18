@@ -51,11 +51,11 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       		@secondTeamScore = secondTeam.css("td").last.content.strip
       		
       		if @timeLeft.include? "Final"
-        		response = "The Final score for the " + userTeam + " game is: " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ")."
+        		response = "The Final score for the " + @firstTeamName + " game is: " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ")."
       		elsif @timeLeft.include? "PM"
-        		response = "The " + userTeam + " game is at " + @timeLeft + ". It will be the " + @firstTeamName + " vs " + @secondTeamName + "."
+        		response = "The " + @firstTeamName + " game is at " + @timeLeft + ". It will be the " + @firstTeamName + " vs " + @secondTeamName + "."
       		else
-        		response = "The " + userTeam + " are still playing. The score is " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ") with " + @timeLeft + "."
+        		response = "The " + @firstTeamName+ " are still playing. The score is " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ") with " + @timeLeft + "."
       		end
 
 			say response	
@@ -64,7 +64,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 			request_completed
 		}
 		
-	  say "Checking to see if the " + userTeam + " played today."
+	  say "Checking to see all games played today."
 	  
 	end
 	
