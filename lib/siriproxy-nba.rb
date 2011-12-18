@@ -44,17 +44,17 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       	@secondTeamName = secondTeam.css("strong").first.content.strip
       	@secondTeamScore = secondTeam.css("td").last.content.strip
       	
-      	say "test " + userTeam + " " + @firstTeamName + " " + @firstTeamScore + " " + @secondTeamName + " " + @secondTeamScore + " " + @timeLeft + " "
+      	#say "test " + userTeam + " " + @firstTeamName + " " + @firstTeamScore + " " + @secondTeamName + " " + @secondTeamScore + " " + @timeLeft + " "
       	
-      	if (@firstTeamName != @teamInt)
-      		if  (@secondTeamName != @teamInt)
+      	if !(@firstTeamName == @teamInt)
+      		if  !(@secondTeamName == @teamInt)
       			@firstTeamName = ""
       			@secondTeamName = ""
       		end
       	end
       	
-      	if (@secondTeamName != @teamInt)
-      		if  (@firstTeamName != @teamInt)
+      	if !(@secondTeamName == @teamInt)
+      		if  !(@firstTeamName == @teamInt)
       			@firstTeamName = ""
       			@secondTeamName = ""
       		end
@@ -175,7 +175,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       return "Hornets"
       end
     if(phrase.match(/san antonio/i) || phrase.match(/spurs/i))
-    @teamInt = "SAN"
+    @teamInt = "SAS"
       return "Spurs"
       end
     if(phrase.match(/denver/i) || phrase.match(/nuggets/i))
