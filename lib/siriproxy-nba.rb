@@ -215,7 +215,6 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       end
 	
 		return phrase
-	end
 	
 	end
 end
