@@ -28,31 +28,27 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 	def score(userTeam)
 	  Thread.new {
 	    doc = Nokogiri::HTML(open("http://m.espn.go.com/nba/scoreboard"))
+      	doc.xpath("//*[@class=\"match\"]")
       	
-      	#say "Step 1"
-      	#games = doc.xpath("//*[@class=\"match\"]")
       	games = doc.css(".match")
       	games.each {
-      	|game|
-      	#say "Step 2"
-      	@timeLeft = game.css(".snap-5").first.content.strip
-      	#say "Step 2.5"
-      	firstTeam = game.css(".competitor").first
-      	secondTeam = game.css(".competitor").last
-      	firstTemp = firstTeam.css("strong").first.content.strip
-      	@firstTeamScore = firstTeam.css("td").last.content.strip
-      	secondTemp = secondTeam.css("strong").first.content.strip
-      	@secondTeamScore = secondTeam.css("td").last.content.strip
+      		|game|
+      		@timeLeft = game.css(".snap-5").first.content.strip
+      		firstTeam = game.css(".competitor").first
+      		secondTeam = game.css(".competitor").last
+      		firstTemp = firstTeam.css("strong").first.content.strip
+      		secondTemp = secondTeam.css("strong").first.content.strip
       	
-      	say "test " + userTeam + " " + @firstTeamName + " " + @firstTeamScore + " " + @secondTeamName + " " + @secondTeamScore + " " + @timeLeft + " "
+      		say "test " + userTeam + " " + @firstTeamName + " " + @firstTeamScore + " " + @secondTeamName + " " + @secondTeamScore + " " + @timeLeft + " "
       	
-      	if ((@teamInt.downcase == firstTemp.downcase) || (@teamInt.downcase == secondTemp.downcase))
-      		@firstTeamName = firstTemp
-      		@secondTeamName = secondTemp
-      		break
-      	end
-      		
-      } 
+      		if ((@teamInt.downcase == firstTemp.downcase) || (@teamInt.downcase == secondTemp.downcase))
+      			@firstTeamName = firstTemp
+      			@secondTeamName = secondTemp
+      			@firstTeamScore = firstTeam.css("td").last.content.strip
+      			@secondTeamScore = secondTeam.css("td").last.content.strip
+      			#break
+      			end
+      	} 
       	
       if((@firstTeamName == "") || (@secondTeamName == ""))
         response = "No games involving the " + userTeam + " were found playing tonight"
