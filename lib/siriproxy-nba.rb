@@ -21,9 +21,51 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
     #if you have custom configuration options, process them here!
     end
   
-  listen_for /score of the (.*) game/i do |phrase|
+  listen_for /NBA (.*)/i do |phrase|
 	  team = pickOutTeam(phrase)
-	  score(team) #in the function, request_completed will be called when the thread is finished
+	  if team.include? "all games"
+	  	allscores(team)
+	  else
+	  	score(team) #in the function, request_completed will be called when the thread is finished
+	  end
+	end
+	
+	def allscores(userTeam)
+	  Thread.new {
+	    doc = Nokogiri::HTML(open("http://m.espn.go.com/nba/scoreboard"))
+      	games = doc.css(".match")
+      	games.each {
+      		|game|
+      		@timeLeft = game.css(".snap-5").first.content.strip
+      		firstTeam = game.css(".competitor").first
+      		secondTeam = game.css(".competitor").last
+      		firstTemp = firstTeam.css("strong").first.content.strip
+      		secondTemp = secondTeam.css("strong").first.content.strip
+      		
+      		firstTemp = nameFromInt(firstTemp)
+      		secondTemp = nameFromInt(secondTemp)
+      		
+      		@firstTeamName = firstTemp
+      		@secondTeamName = secondTemp
+      		@firstTeamScore = firstTeam.css("td").last.content.strip
+      		@secondTeamScore = secondTeam.css("td").last.content.strip
+      		
+      		if @timeLeft.include? "Final"
+        		response = "The Final score for the " + userTeam + " game is: " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ")."
+      		elsif @timeLeft.include? "PM"
+        		response = "The " + userTeam + " game is at " + @timeLeft + ". It will be the " + @firstTeamName + " vs " + @secondTeamName + "."
+      		else
+        		response = "The " + userTeam + " are still playing. The score is " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ") with " + @timeLeft + "."
+      		end
+
+			say response	
+      			
+      	} 			
+			request_completed
+		}
+		
+	  say "Checking to see if the " + userTeam + " played today."
+	  
 	end
 	
 	def score(userTeam)
@@ -59,8 +101,6 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       			@secondTeamName = ""
       		end
       			
-      			
-      		
       	} 
       	
       if((@firstTeamName == "") || (@secondTeamName == ""))
