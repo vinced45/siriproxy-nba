@@ -44,6 +44,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       	@secondTeamName = secondTeam.css("strong").first.content.strip
       	@secondTeamScore = secondTeam.css("td").last.content.strip
       	}
+      	say "test " + userTeam + " " + @firstTeamName + " " + @firstTeamScore + " " + @secondTeamName + " " + @secondTeamScore + " " + @timeLeft + " "
       	
       	if (@firstTeamName != @teamInt)
       		if  (@secondTeamName != @teamInt)
