@@ -97,123 +97,123 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
     	@teamInt = "BOS"
       return "Celtics"
       end
-    elsif(phrase.match(/new jersy/i) || phrase.match(/nets/i))
+    if(phrase.match(/new jersy/i) || phrase.match(/nets/i))
     @teamInt = "NJN"
       return "Nets"
       end
-    elsif(phrase.match(/new york/i) || phrase.match(/knicks/i))
+    if(phrase.match(/new york/i) || phrase.match(/knicks/i))
     @teamInt = "NYK"
       return "Knicks"
       end
-    elsif(phrase.match(/philadelphia/i) || phrase.match(/76ers/i))
+    if(phrase.match(/philadelphia/i) || phrase.match(/76ers/i))
     @teamInt = "PHI"
       return "76ers"
       end
-    elsif(phrase.match(/toronto/i) || phrase.match(/raptors/i))
+    if(phrase.match(/toronto/i) || phrase.match(/raptors/i))
     @teamInt = "TOR"
       return "Raptors"
       end
-    elsif(phrase.match(/chicago/i) || phrase.match(/bulls/i))
+    if(phrase.match(/chicago/i) || phrase.match(/bulls/i))
     @teamInt = "CHI"
       return "Bulls"
       end
-    elsif(phrase.match(/cleveland/i) || phrase.match(/cavaliers/i))
+    if(phrase.match(/cleveland/i) || phrase.match(/cavaliers/i))
     @teamInt = "CLE"
       return "Cavaliers"
       end
-    elsif(phrase.match(/detroit/i) || phrase.match(/pistons/i))
+    if(phrase.match(/detroit/i) || phrase.match(/pistons/i))
     @teamInt = "DET"
       return "Pistons"
       end
-    elsif(phrase.match(/indiana/i) || phrase.match(/pacers/i))
+    if(phrase.match(/indiana/i) || phrase.match(/pacers/i))
     @teamInt = "IND"
       return "Pacers"
       end
-    elsif(phrase.match(/milwaukee/i) || phrase.match(/bucks/i))
+    if(phrase.match(/milwaukee/i) || phrase.match(/bucks/i))
     @teamInt = "MIL"
       return "Bucks"
       end
-    elsif(phrase.match(/atlanta/i) || phrase.match(/hawks/i))
+    if(phrase.match(/atlanta/i) || phrase.match(/hawks/i))
     @teamInt = "ATL"
       return "Hawks"
       end
-    elsif(phrase.match(/charlotte/i) || phrase.match(/bobcats/i))
+    if(phrase.match(/charlotte/i) || phrase.match(/bobcats/i))
     @teamInt = "CHA"
       return "Bobcats"
       end
-    elsif(phrase.match(/miami/i) || phrase.match(/heat/i))
+    if(phrase.match(/miami/i) || phrase.match(/heat/i))
     @teamInt = "MIA"
       return "Heat"
       end
-    elsif(phrase.match(/orlando/i) || phrase.match(/magic/i))
+    if(phrase.match(/orlando/i) || phrase.match(/magic/i))
     @teamInt = "ORL"
       return "Magic"
       end
-    elsif(phrase.match(/washington/i) || phrase.match(/wizards/i))
+    if(phrase.match(/washington/i) || phrase.match(/wizards/i))
     @teamInt = "WAS"
       return "Wizards"
       end
-    elsif(phrase.match(/golden state/i) || phrase.match(/warriors/i))
+    if(phrase.match(/golden state/i) || phrase.match(/warriors/i))
     @teamInt = "GSW"
       return "Warriors"
       end
-    elsif(phrase.match(/clippers/i) || phrase.match(/clippers/i))
+    if(phrase.match(/clippers/i) || phrase.match(/clippers/i))
     @teamInt = "LAC"
       return "Clippers"
       end
-    elsif(phrase.match(/lakers/i) || phrase.match(/lakers/i))
+    if(phrase.match(/lakers/i) || phrase.match(/lakers/i))
     @teamInt = "LAL"
       return "Lakers"
       end
-    elsif(phrase.match(/phoenix/i) || phrase.match(/phoenix/i))
+    if(phrase.match(/phoenix/i) || phrase.match(/phoenix/i))
     @teamInt = "PHX"
       return "Suns"
       end
-    elsif(phrase.match(/sacramento/i) || phrase.match(/kings/i))
+    if(phrase.match(/sacramento/i) || phrase.match(/kings/i))
     @teamInt = "SAC"
       return "Kings"
       end
-    elsif(phrase.match(/dallas/i) || phrase.match(/mavericks/i))
+    if(phrase.match(/dallas/i) || phrase.match(/mavericks/i))
     @teamInt = "DAL"
       return "Mavericks"
       end
-    elsif(phrase.match(/houston/i) || phrase.match(/rockets/i))
+    if(phrase.match(/houston/i) || phrase.match(/rockets/i))
     @teamInt = "HOU"
       return "Rockets"
       end
-    elsif(phrase.match(/memphis/i) || phrase.match(/grizzles/i))
+    if(phrase.match(/memphis/i) || phrase.match(/grizzles/i))
     @teamInt = "MEM"
     return "Grizzles"
     end
-    elsif(phrase.match(/new orleans/i) || phrase.match(/hornets/i))
+    if(phrase.match(/new orleans/i) || phrase.match(/hornets/i))
     @teamInt = "NOR"
       return "Hornets"
       end
-    elsif(phrase.match(/san antonio/i) || phrase.match(/spurs/i))
+    if(phrase.match(/san antonio/i) || phrase.match(/spurs/i))
     @teamInt = "SAN"
       return "Spurs"
       end
-    elsif(phrase.match(/denver/i) || phrase.match(/nuggets/i))
+    if(phrase.match(/denver/i) || phrase.match(/nuggets/i))
     @teamInt = "DEN"
       return "Nuggets"
       end
-    elsif(phrase.match(/minnesota/i) || phrase.match(/timberwolves/i))
+    if(phrase.match(/minnesota/i) || phrase.match(/timberwolves/i))
     @teamInt = "MIN"
       return "Timberwolves"
       end
-    elsif(phrase.match(/oklahoma/i) || phrase.match(/thunder/i))
+    if(phrase.match(/oklahoma/i) || phrase.match(/thunder/i))
     @teamInt = "OKC"
       return "Thunder"
       end
-    elsif(phrase.match(/portland/i) || phrase.match(/trailblazers/i))
+    if(phrase.match(/portland/i) || phrase.match(/trailblazers/i))
     @teamInt = "POR"
       return "Trailblazers"
       end
-    elsif(phrase.match(/utah/i) || phrase.match(/jazz/i))
+    if(phrase.match(/utah/i) || phrase.match(/jazz/i))
     @teamInt = "UTH"
       return "Jazz"
       end
-	else
+	
 		return phrase
 	end
 	
