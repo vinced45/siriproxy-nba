@@ -15,8 +15,8 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
   @secondTeamName = ""
   @secondTeamScore = ""
   @timeLeft = ""
-  @teamInt = ""	
-  
+  @teamInt = 0	
+  @teamInt2 = 0
 	def initialize(config)
     #if you have custom configuration options, process them here!
     end
@@ -40,24 +40,28 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       		#say "test-" + @teamInt + "-" + firstTemp + "-" + secondTemp + "-"
       		
       		firstTemp = nameFromInt(firstTemp)
-      		secondTemp = nameFromInt(secondTemp)
+      		
       		#say "test-" + userTeam + "-" + firstTemp + "-" + secondTemp + "-"
-      		if userTeam.eql(secondTemp) 
+      		if (teamInt - teamInt2 == 0)
+      			@firstTeamName = firstTemp
+      			@secondTeamName = nameFromInt(secondTemp)
+      			@firstTeamScore = firstTeam.css("td").last.content.strip
+      			@secondTeamScore = secondTeam.css("td").last.content.strip
+      			say "2"
+      			break
+      		end
+      		      			
+      		if (teamInt - teamInt2 == 0)
       			@firstTeamName = firstTemp
       			@secondTeamName = secondTemp
       			@firstTeamScore = firstTeam.css("td").last.content.strip
       			@secondTeamScore = secondTeam.css("td").last.content.strip
       			say "In Tree"
-      		elsif userTeam.eql(firstTemp)
-      			@firstTeamName = firstTemp
-      			@secondTeamName = secondTemp
-      			@firstTeamScore = firstTeam.css("td").last.content.strip
-      			@secondTeamScore = secondTeam.css("td").last.content.strip
-      			say "In Tree2"
-      		else
+      			break
+      		end
+      		
       			@firstTeamName = ""
       			@secondTeamName = ""
-      		end
       	} 
       	
       if((@firstTeamName == "") || (@secondTeamName == ""))
@@ -78,114 +82,123 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 
 def nameFromInt(phrase)
     if(phrase.match(/BOS/i))
+    	@teamInt = 1
       return "Celtics"
       end
     if(phrase.match(/NJN/i))
+    @teamInt = 2
       return "Nets"
       end
     if(phrase.match(/NYK/i))
+    @teamInt = 3
       return "Knicks"
       end
     if(phrase.match(/PHI/i))
+    @teamInt = 4
       return "76ers"
       end
     if(phrase.match(/TOR/i))
+    @teamInt = 5
       return "Raptors"
       end
     if(phrase.match(/CHI/i))
+    @teamInt = 6
       return "Bulls"
       end
     if(phrase.match(/CLE/i))
+    @teamInt = 7
       return "Cavaliers"
       end
     if(phrase.match(/DET/i))
+    @teamInt = 8
       return "Pistons"
       end
     if(phrase.match(/IND/i))
+    @teamInt = 9
       return "Pacers"
       end
-    if(phrase.match(/MIL/i) || phrase.match(/bucks/i))
-    @teamInt = "MIL"
+    if(phrase.match(/MIL/i))
+    @teamInt = 10
       return "Bucks"
       end
     if(phrase.match(/ATL/i) || phrase.match(/hawks/i))
-    @teamInt = "ATL"
+    @teamInt = 11
       return "Hawks"
       end
     if(phrase.match(/CHA/i) || phrase.match(/bobcats/i))
-    @teamInt = "CHA"
+    @teamInt = 12
       return "Bobcats"
       end
     if(phrase.match(/MIA/i) || phrase.match(/heat/i))
-    @teamInt = "MIA"
+    @teamInt = 13
       return "Heat"
       end
     if(phrase.match(/ORL/i) || phrase.match(/magic/i))
-    @teamInt = "ORL"
+    @teamInt = 14
       return "Magic"
       end
     if(phrase.match(/WAS/i) || phrase.match(/wizards/i))
-    @teamInt = "WAS"
+    @teamInt = 15
       return "Wizards"
       end
     if(phrase.match(/GSW/i) || phrase.match(/warriors/i))
-    @teamInt = "GSW"
+    @teamInt = 16
       return "Warriors"
       end
     if(phrase.match(/LAC/i) || phrase.match(/clippers/i))
-    @teamInt = "LAC"
+    @teamInt = 17
       return "Clippers"
       end
     if(phrase.match(/LAL/i) || phrase.match(/lakers/i))
-    @teamInt = "LAL"
+    @teamInt = 18
       return "Lakers"
       end
     if(phrase.match(/PHX/i) || phrase.match(/phoenix/i))
-    @teamInt = "PHX"
+    @teamInt = 19
       return "Suns"
       end
     if(phrase.match(/SAC/i) || phrase.match(/kings/i))
-    @teamInt = "SAC"
+    @teamInt = 20
       return "Kings"
       end
     if(phrase.match(/DAL/i) || phrase.match(/mavericks/i))
-    @teamInt = "DAL"
+    @teamInt = 21
       return "Mavericks"
       end
     if(phrase.match(/HOU/i) || phrase.match(/rockets/i))
-    @teamInt = "HOU"
+    @teamInt = 22
       return "Rockets"
       end
     if(phrase.match(/MEM/i) || phrase.match(/grizzles/i))
-    @teamInt = "MEM"
+    @teamInt = 23
     return "Grizzles"
     end
     if(phrase.match(/NOR/i) || phrase.match(/hornets/i))
-    @teamInt = "NOR"
+    @teamInt = 24
       return "Hornets"
       end
     if(phrase.match(/SAS/i) || phrase.match(/spurs/i))
-    @teamInt = "SAS"
+    @teamInt = 25
       return "Spurs"
       end
     if(phrase.match(/DEN/i) || phrase.match(/nuggets/i))
-    @teamInt = "DEN"
+    @teamInt = 26
       return "Nuggets"
       end
     if(phrase.match(/MIN/i) || phrase.match(/timberwolves/i))
-    @teamInt = "MIN"
+    @teamInt = 27
       return "Timberwolves"
       end
     if(phrase.match(/OKC/i) || phrase.match(/thunder/i))
-    @teamInt = "OKC"
+    @teamInt = 28
       return "Thunder"
       end
     if(phrase.match(/POR/i) || phrase.match(/trailblazers/i))
-    @teamInt = "POR"
+    @teamInt = 29
       return "Trailblazers"
       end
     if(phrase.match(/UTH/i) || phrase.match(/jazz/i))
-    @teamInt = "UTH"
+    @teamInt = 30
       return "Jazz"
       end
 	
@@ -196,123 +209,123 @@ def nameFromInt(phrase)
 	
   def pickOutTeam(phrase)
     if(phrase.match(/boston/i) || phrase.match(/celtics/i))
-    	@teamInt = "BOS"
+    	@teamInt2 = 1
       return "Celtics"
       end
     if(phrase.match(/new jersy/i) || phrase.match(/nets/i))
-    @teamInt = "NJN"
+    @teamInt2 = 2
       return "Nets"
       end
     if(phrase.match(/new york/i) || phrase.match(/knicks/i))
-    @teamInt = "NYK"
+    @teamInt2 = 3
       return "Knicks"
       end
     if(phrase.match(/philadelphia/i) || phrase.match(/76ers/i))
-    @teamInt = "PHI"
+    @teamInt2 = 4
       return "76ers"
       end
     if(phrase.match(/toronto/i) || phrase.match(/raptors/i))
-    @teamInt = "TOR"
+    @teamInt2 = 5
       return "Raptors"
       end
     if(phrase.match(/chicago/i) || phrase.match(/bulls/i))
-    @teamInt = "CHI"
+    @teamInt2 = 6
       return "Bulls"
       end
     if(phrase.match(/cleveland/i) || phrase.match(/cavaliers/i))
-    @teamInt = "CLE"
+    @teamInt2 = 7
       return "Cavaliers"
       end
     if(phrase.match(/detroit/i) || phrase.match(/pistons/i))
-    @teamInt = "DET"
+    @teamInt2 = 8
       return "Pistons"
       end
     if(phrase.match(/indiana/i) || phrase.match(/pacers/i))
-    @teamInt = "IND"
+    @teamInt2 = 9
       return "Pacers"
       end
     if(phrase.match(/milwaukee/i) || phrase.match(/bucks/i))
-    @teamInt = "MIL"
+    @teamInt2 = 10
       return "Bucks"
       end
     if(phrase.match(/atlanta/i) || phrase.match(/hawks/i))
-    @teamInt = "ATL"
+    @teamInt2 = 11
       return "Hawks"
       end
     if(phrase.match(/charlotte/i) || phrase.match(/bobcats/i))
-    @teamInt = "CHA"
+    @teamInt2 = 12
       return "Bobcats"
       end
     if(phrase.match(/miami/i) || phrase.match(/heat/i))
-    @teamInt = "MIA"
+    @teamInt2 = 13
       return "Heat"
       end
     if(phrase.match(/orlando/i) || phrase.match(/magic/i))
-    @teamInt = "ORL"
+    @teamInt2 = 14
       return "Magic"
       end
     if(phrase.match(/washington/i) || phrase.match(/wizards/i))
-    @teamInt = "WAS"
+    @teamInt2 = 15
       return "Wizards"
       end
     if(phrase.match(/golden state/i) || phrase.match(/warriors/i))
-    @teamInt = "GSW"
+    @teamInt2 = 16
       return "Warriors"
       end
     if(phrase.match(/clippers/i) || phrase.match(/clippers/i))
-    @teamInt = "LAC"
+    @teamInt2 = 17
       return "Clippers"
       end
     if(phrase.match(/lakers/i) || phrase.match(/lakers/i))
-    @teamInt = "LAL"
+    @teamInt2 = 18
       return "Lakers"
       end
     if(phrase.match(/phoenix/i) || phrase.match(/phoenix/i))
-    @teamInt = "PHX"
+    @teamInt2 = 19
       return "Suns"
       end
     if(phrase.match(/sacramento/i) || phrase.match(/kings/i))
-    @teamInt = "SAC"
+    @teamInt2 = 20
       return "Kings"
       end
     if(phrase.match(/dallas/i) || phrase.match(/mavericks/i))
-    @teamInt = "DAL"
+    @teamInt2 = 21
       return "Mavericks"
       end
     if(phrase.match(/houston/i) || phrase.match(/rockets/i))
-    @teamInt = "HOU"
+    @teamInt2 = 22
       return "Rockets"
       end
     if(phrase.match(/memphis/i) || phrase.match(/grizzles/i))
-    @teamInt = "MEM"
+    @teamInt2 = 23
     return "Grizzles"
     end
     if(phrase.match(/new orleans/i) || phrase.match(/hornets/i))
-    @teamInt = "NOR"
+    @teamInt2 = 24
       return "Hornets"
       end
     if(phrase.match(/san antonio/i) || phrase.match(/spurs/i))
-    @teamInt = "SAS"
+    @teamInt2 = 25
       return "Spurs"
       end
     if(phrase.match(/denver/i) || phrase.match(/nuggets/i))
-    @teamInt = "DEN"
+    @teamInt2 = 26
       return "Nuggets"
       end
     if(phrase.match(/minnesota/i) || phrase.match(/timberwolves/i))
-    @teamInt = "MIN"
+    @teamInt2 = 27
       return "Timberwolves"
       end
     if(phrase.match(/oklahoma/i) || phrase.match(/thunder/i))
-    @teamInt = "OKC"
+    @teamInt2 = 28
       return "Thunder"
       end
     if(phrase.match(/portland/i) || phrase.match(/trailblazers/i))
-    @teamInt = "POR"
+    @teamInt2 = 29
       return "Trailblazers"
       end
     if(phrase.match(/utah/i) || phrase.match(/jazz/i))
-    @teamInt = "UTH"
+    @teamInt2 = 30
       return "Jazz"
       end
 	
