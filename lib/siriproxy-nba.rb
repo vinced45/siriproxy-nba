@@ -46,14 +46,18 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       			@secondTeamName = nameFromInt(secondTemp)
       			@firstTeamScore = firstTeam.css("td").last.content.strip
       			@secondTeamScore = secondTeam.css("td").last.content.strip
+      			break
       		elsif secondTemp.include? userTeam
       			@firstTeamName = firstTemp
       			@secondTeamName = nameFromInt(secondTemp)
       			@firstTeamScore = firstTeam.css("td").last.content.strip
       			@secondTeamScore = secondTeam.css("td").last.content.strip
+      			break
       		else
       			@firstTeamName = ""
       			@secondTeamName = ""
+      		end
+      			
       			
       		
       	} 
