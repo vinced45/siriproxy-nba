@@ -62,7 +62,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
         	response = "The " + userTeam + " are still playing. The score is " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ") with " + @timeLeft + 
         end
       end
-	end  
+	  
 			@firstTeamName = ""
 			@secondTeamName = ""
 			say response
