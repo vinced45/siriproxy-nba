@@ -56,7 +56,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
   		#@timeLeft = time.text
   		
   		say "The score for the " + userTeam + " game is: " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ") with" + @timeLeft + " left."
-  		}
+  		
       	
       	say "Step 3"
       	
