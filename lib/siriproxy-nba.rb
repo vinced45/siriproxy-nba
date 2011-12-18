@@ -37,15 +37,8 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       		firstTemp = firstTeam.css("strong").first.content.strip
       		secondTemp = secondTeam.css("strong").first.content.strip
       		#say "test " + userTeam + " " + @firstTeamName + " " + @firstTeamScore + " " + @secondTeamName + " " + @secondTeamScore + " " + @timeLeft + " "
-      	
-      		if @teamInt.strip.upcase == firstTemp.strip.upcase
-      			@firstTeamName = firstTemp
-      			@secondTeamName = secondTemp
-      			@firstTeamScore = firstTeam.css("td").last.content.strip
-      			@secondTeamScore = secondTeam.css("td").last.content.strip
-      		end
       		
-      		if @teamInt.strip.upcase == secondTemp.strip.upcase
+      		if ((@teamInt == secondTemp) || (@teamInt == firstTemp)) then
       			@firstTeamName = firstTemp
       			@secondTeamName = secondTemp
       			@firstTeamScore = firstTeam.css("td").last.content.strip
