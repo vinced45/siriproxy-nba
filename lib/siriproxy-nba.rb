@@ -30,16 +30,24 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 	    doc = Nokogiri::HTML(open("http://m.espn.go.com/nba/scoreboard"))
       	
       	say "Step 1"
-      	games = doc.xpath("//*[@class=\"match\"]")
+      	#games = doc.xpath("//*[@class=\"match\"]")
+      	games = doc.css(".match")
       	games.each {
       	|game|
       	say "Step 2"
-      	time = game.xpath("/table/tbody/tr/th/span").first
+      	@timeLeft = game.css(".snap-5").first.content.strip
       	say "Step 2.5"
-      	firstTeamName = game.xpath("/table/tbody/tr[3]/td/strong").first
-  		firstTeamScore = game.xpath("/table/tbody/tr[3]/td[2]").first
-  		secondTeamName = game.xpath("/table/tbody/tr[4]/td/strong").first
-  		secondTeamScore = game.xpath("/table/tbody/tr[4]/td[2]").first
+      	firstTeam = game.css(".competitor").first
+      	secondTeam = game.css(".competitor").last
+      	@firstTeamName = firstTeam.css("strong").first.content.strip
+      	@firstTeamScore = firstTeam.css("td").last.content.strip
+      	@secondTeamName = secondTeam.css("strong").first.content.strip
+      	@secondTeamScore = secondTeam.css("td").last.content.strip
+      	}
+      	#firstTeamName = game.xpath("/table/tbody/tr[3]/td/strong").first
+  		#firstTeamScore = game.xpath("/table/tbody/tr[3]/td[2]").first
+  		#secondTeamName = game.xpath("/table/tbody/tr[4]/td/strong").first
+  		#secondTeamScore = game.xpath("/table/tbody/tr[4]/td[2]").first
   		say "Step 2.75"
   		#@firstTeamName = firstTeamName.text
   		#@firstTeamScore = firstTeamScore.text
@@ -47,7 +55,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
   		#@secondTeamScore = secondTeamScore.text
   		#@timeLeft = time.text
   		
-  		say "The score for the " + userTeam + " game is: " + firstTeamName + " (" + firstTeamScore + "), " + secondTeamName + " (" + secondTeamScore + ") with" + time + " left."
+  		say "The score for the " + userTeam + " game is: " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ") with" + @timeLeft + " left."
   		}
       	
       	say "Step 3"
