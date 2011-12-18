@@ -40,16 +40,17 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       		#say "test-" + @teamInt + "-" + firstTemp + "-" + secondTemp + "-"
       		
       		firstTemp = nameFromInt(firstTemp)
+      		secondTemp = nameFromInt(secondTemp)
       		
       		if firstTemp.include? userTeam
       			@firstTeamName = firstTemp
-      			@secondTeamName = nameFromInt(secondTemp)
+      			@secondTeamName = secondTemp
       			@firstTeamScore = firstTeam.css("td").last.content.strip
       			@secondTeamScore = secondTeam.css("td").last.content.strip
       			break
       		elsif secondTemp.include? userTeam
       			@firstTeamName = firstTemp
-      			@secondTeamName = nameFromInt(secondTemp)
+      			@secondTeamName = secondTemp
       			@firstTeamScore = firstTeam.css("td").last.content.strip
       			@secondTeamScore = secondTeam.css("td").last.content.strip
       			break
