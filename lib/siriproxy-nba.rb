@@ -43,7 +43,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       	@firstTeamScore = firstTeam.css("td").last.content.strip
       	@secondTeamName = secondTeam.css("strong").first.content.strip
       	@secondTeamScore = secondTeam.css("td").last.content.strip
-      	}
+      	
       	say "test " + userTeam + " " + @firstTeamName + " " + @firstTeamScore + " " + @secondTeamName + " " + @secondTeamScore + " " + @timeLeft + " "
       	
       	if (@firstTeamName != @teamInt)
@@ -59,24 +59,8 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       			@secondTeamName = ""
       		end
       	end
-      		 
-      	#firstTeamName = game.xpath("/table/tbody/tr[3]/td/strong").first
-  		#firstTeamScore = game.xpath("/table/tbody/tr[3]/td[2]").first
-  		#secondTeamName = game.xpath("/table/tbody/tr[4]/td/strong").first
-  		#secondTeamScore = game.xpath("/table/tbody/tr[4]/td[2]").first
-  		#say "Step 2.75"
-  		#@firstTeamName = firstTeamName.text
-  		#@firstTeamScore = firstTeamScore.text
-  		#@secondTeamName = secondTeamName.text
-  		#@secondTeamScore = secondTeamScore.text
-  		#@timeLeft = time.text
-  		
-  		#say "The score for the " + userTeam + " game is: " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ") with" + @timeLeft + " left."
-  		
+      } 
       	
-      	#say "Step 3"
-      	
-       	
       if((@firstTeamName == "") || (@secondTeamName == ""))
         response = "No games involving the " + userTeam + " were found playing tonight"
       else 
