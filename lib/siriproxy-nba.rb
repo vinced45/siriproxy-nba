@@ -16,6 +16,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
   @secondTeamScore = ""
   @timeLeft = ""
   @teamInt = ""	
+  
 	def initialize(config)
     #if you have custom configuration options, process them here!
     end
@@ -36,9 +37,12 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       		secondTeam = game.css(".competitor").last
       		firstTemp = firstTeam.css("strong").first.content.strip
       		secondTemp = secondTeam.css("strong").first.content.strip
-      		say "test-" + @teamInt + "-" + firstTemp + "-" + secondTemp + "-"
+      		#say "test-" + @teamInt + "-" + firstTemp + "-" + secondTemp + "-"
       		
-      		if ((@teamInt.strip.downcase == secondTemp.strip.downcase) || (@teamInt.strip.downcase == firstTemp.strip.downcase))
+      		firstTemp = nameFromInt(firstTemp)
+      		secondTemp = nameFromInt(secondTemp)
+      		
+      		if ((userTeam == secondTemp) || (userTeam == firstTemp))
       			@firstTeamName = firstTemp
       			@secondTeamName = secondTemp
       			@firstTeamScore = firstTeam.css("td").last.content.strip
@@ -64,6 +68,124 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 	  say "Checking to see if the " + userTeam + " played today."
 	  
 	end
+
+def nameFromInt(phrase)
+    if(phrase.match(/BOS/i))
+      return "Celtics"
+      end
+    if(phrase.match(/NJN/i))
+      return "Nets"
+      end
+    if(phrase.match(/NYK/i))
+      return "Knicks"
+      end
+    if(phrase.match(/PHI/i))
+      return "76ers"
+      end
+    if(phrase.match(/TOR/i))
+      return "Raptors"
+      end
+    if(phrase.match(/CHI/i))
+      return "Bulls"
+      end
+    if(phrase.match(/CLE/i))
+      return "Cavaliers"
+      end
+    if(phrase.match(/DET/i))
+      return "Pistons"
+      end
+    if(phrase.match(/IND/i))
+      return "Pacers"
+      end
+    if(phrase.match(/MIL/i) || phrase.match(/bucks/i))
+    @teamInt = "MIL"
+      return "Bucks"
+      end
+    if(phrase.match(/ATL/i) || phrase.match(/hawks/i))
+    @teamInt = "ATL"
+      return "Hawks"
+      end
+    if(phrase.match(/CHA/i) || phrase.match(/bobcats/i))
+    @teamInt = "CHA"
+      return "Bobcats"
+      end
+    if(phrase.match(/MIA/i) || phrase.match(/heat/i))
+    @teamInt = "MIA"
+      return "Heat"
+      end
+    if(phrase.match(/ORL/i) || phrase.match(/magic/i))
+    @teamInt = "ORL"
+      return "Magic"
+      end
+    if(phrase.match(/WAS/i) || phrase.match(/wizards/i))
+    @teamInt = "WAS"
+      return "Wizards"
+      end
+    if(phrase.match(/GSW/i) || phrase.match(/warriors/i))
+    @teamInt = "GSW"
+      return "Warriors"
+      end
+    if(phrase.match(/LAC/i) || phrase.match(/clippers/i))
+    @teamInt = "LAC"
+      return "Clippers"
+      end
+    if(phrase.match(/LAL/i) || phrase.match(/lakers/i))
+    @teamInt = "LAL"
+      return "Lakers"
+      end
+    if(phrase.match(/PHX/i) || phrase.match(/phoenix/i))
+    @teamInt = "PHX"
+      return "Suns"
+      end
+    if(phrase.match(/SAC/i) || phrase.match(/kings/i))
+    @teamInt = "SAC"
+      return "Kings"
+      end
+    if(phrase.match(/DAL/i) || phrase.match(/mavericks/i))
+    @teamInt = "DAL"
+      return "Mavericks"
+      end
+    if(phrase.match(/HOU/i) || phrase.match(/rockets/i))
+    @teamInt = "HOU"
+      return "Rockets"
+      end
+    if(phrase.match(/MEM/i) || phrase.match(/grizzles/i))
+    @teamInt = "MEM"
+    return "Grizzles"
+    end
+    if(phrase.match(/NOR/i) || phrase.match(/hornets/i))
+    @teamInt = "NOR"
+      return "Hornets"
+      end
+    if(phrase.match(/SAS/i) || phrase.match(/spurs/i))
+    @teamInt = "SAS"
+      return "Spurs"
+      end
+    if(phrase.match(/DEN/i) || phrase.match(/nuggets/i))
+    @teamInt = "DEN"
+      return "Nuggets"
+      end
+    if(phrase.match(/MIN/i) || phrase.match(/timberwolves/i))
+    @teamInt = "MIN"
+      return "Timberwolves"
+      end
+    if(phrase.match(/OKC/i) || phrase.match(/thunder/i))
+    @teamInt = "OKC"
+      return "Thunder"
+      end
+    if(phrase.match(/POR/i) || phrase.match(/trailblazers/i))
+    @teamInt = "POR"
+      return "Trailblazers"
+      end
+    if(phrase.match(/UTH/i) || phrase.match(/jazz/i))
+    @teamInt = "UTH"
+      return "Jazz"
+      end
+	
+		return phrase
+	
+	end
+
 	
   def pickOutTeam(phrase)
     if(phrase.match(/boston/i) || phrase.match(/celtics/i))
