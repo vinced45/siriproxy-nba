@@ -39,26 +39,19 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       	#say "Step 2.5"
       	firstTeam = game.css(".competitor").first
       	secondTeam = game.css(".competitor").last
-      	@firstTeamName = firstTeam.css("strong").first.content.strip
+      	firstTemp = firstTeam.css("strong").first.content.strip
       	@firstTeamScore = firstTeam.css("td").last.content.strip
-      	@secondTeamName = secondTeam.css("strong").first.content.strip
+      	secondTemp = secondTeam.css("strong").first.content.strip
       	@secondTeamScore = secondTeam.css("td").last.content.strip
       	
-      	#say "test " + userTeam + " " + @firstTeamName + " " + @firstTeamScore + " " + @secondTeamName + " " + @secondTeamScore + " " + @timeLeft + " "
+      	say "test " + userTeam + " " + @firstTeamName + " " + @firstTeamScore + " " + @secondTeamName + " " + @secondTeamScore + " " + @timeLeft + " "
       	
-      	if !(@firstTeamName == @teamInt)
-      		if  !(@secondTeamName == @teamInt)
-      			@firstTeamName = ""
-      			@secondTeamName = ""
-      		end
+      	if ((@teamInt.downcase == firstTemp.downcase) || (@teamInt.downcase == secondTemp.downcase))
+      		@firstTeamName = firstTemp
+      		@secondTeamName = secondTemp
+      		break
       	end
-      	
-      	if !(@secondTeamName == @teamInt)
-      		if  !(@firstTeamName == @teamInt)
-      			@firstTeamName = ""
-      			@secondTeamName = ""
-      		end
-      	end
+      		
       } 
       	
       if((@firstTeamName == "") || (@secondTeamName == ""))
