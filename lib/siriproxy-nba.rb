@@ -41,6 +41,9 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       		
       		firstTemp = nameFromInt(firstTemp)
       		
+      		if firstTemp.include? userTeam
+      			say "same"
+      		
       			@firstTeamName = firstTemp
       			@secondTeamName = nameFromInt(secondTemp)
       			@firstTeamScore = firstTeam.css("td").last.content.strip
@@ -50,9 +53,16 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       	
       if((@firstTeamName == "") || (@secondTeamName == ""))
         response = "No games involving the " + userTeam + " were found playing tonight"
-      else 
-        response = "The score for the " + userTeam + " game is: " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ") with" + @timeLeft + " left." 
-			end  
+      else
+      	if @timeLeft.include? "Final"
+        	response = "The Final score for the " + userTeam + " game is: " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ")."
+        elsif @timeLeft.include? "PM"
+        	response = "The " + userTeam + " game is at " + @timeLeft + ". It will be the " + @firstTeamName + " vs " + @secondTeamName + "."
+        else
+        	response = "The " + userTeam + " are still playing. The score is " + @firstTeamName + " (" + @firstTeamScore + "), " + @secondTeamName + " (" + @secondTeamScore + ") with " + @timeLeft + 
+        end
+      end
+	end  
 			@firstTeamName = ""
 			@secondTeamName = ""
 			say response
