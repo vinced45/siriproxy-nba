@@ -42,12 +42,18 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       		firstTemp = nameFromInt(firstTemp)
       		secondTemp = nameFromInt(secondTemp)
       		#say "test-" + userTeam + "-" + firstTemp + "-" + secondTemp + "-"
-      		if ((userTeam.eql(secondTemp)) || (userTeam.eql(firstTemp)))
+      		if userTeam.eql(secondTemp) 
       			@firstTeamName = firstTemp
       			@secondTeamName = secondTemp
       			@firstTeamScore = firstTeam.css("td").last.content.strip
       			@secondTeamScore = secondTeam.css("td").last.content.strip
       			say "In Tree"
+      		elsif userTeam.eql(firstTemp)
+      			@firstTeamName = firstTemp
+      			@secondTeamName = secondTemp
+      			@firstTeamScore = firstTeam.css("td").last.content.strip
+      			@secondTeamScore = secondTeam.css("td").last.content.strip
+      			say "In Tree2"
       		else
       			@firstTeamName = ""
       			@secondTeamName = ""
