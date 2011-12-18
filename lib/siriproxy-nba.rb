@@ -40,24 +40,30 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       		#say "test-" + @teamInt + "-" + firstTemp + "-" + secondTemp + "-"
       		
       		firstTemp = nameFromInt(firstTemp)
-      		
+      		sum = teamInt - teamInt2
       		#say "test-" + userTeam + "-" + firstTemp + "-" + secondTemp + "-"
-      		if (teamInt - teamInt2 == 0)
+      		case sum
+      		when 0
       			@firstTeamName = firstTemp
       			@secondTeamName = nameFromInt(secondTemp)
       			@firstTeamScore = firstTeam.css("td").last.content.strip
       			@secondTeamScore = secondTeam.css("td").last.content.strip
       			say "2"
-      			break
+      		else
+      		
       		end
+      		
+      		sum = teamInt - teamInt2
       		      			
-      		if (teamInt - teamInt2 == 0)
+      		case sum
+      		when 0
       			@firstTeamName = firstTemp
       			@secondTeamName = secondTemp
       			@firstTeamScore = firstTeam.css("td").last.content.strip
       			@secondTeamScore = secondTeam.css("td").last.content.strip
       			say "In Tree"
-      			break
+      		else
+      		
       		end
       		
       			@firstTeamName = ""
