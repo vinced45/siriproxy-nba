@@ -28,8 +28,7 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 	def score(userTeam)
 	  Thread.new {
 	    doc = Nokogiri::HTML(open("http://m.espn.go.com/nba/scoreboard"))
-      	doc.xpath("//*[@class=\"match\"]")
-      	
+	    
       	games = doc.css(".match")
       	games.each {
       		|game|
