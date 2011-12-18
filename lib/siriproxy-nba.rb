@@ -46,14 +46,14 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
       	}
       	
       	if (@firstTeamName != @teamInt)
-      		if  @secondTeamName != @teamInt)
+      		if  (@secondTeamName != @teamInt)
       			@firstTeamName = ""
       			@secondTeamName = ""
       		end
       	end
       	
       	if (@secondTeamName != @teamInt)
-      		if  @firstTeamName != @teamInt)
+      		if  (@firstTeamName != @teamInt)
       			@firstTeamName = ""
       			@secondTeamName = ""
       		end
