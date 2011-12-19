@@ -64,8 +64,8 @@ class SiriProxy::Plugin::NBA < SiriProxy::Plugin
 			request_completed
 		}
 		
-	  #say "Checking to see all games played today."
-	  say "¿qué está haciendo mi amigo"
+	  say "Checking to see all games played today."
+	  
 	end
 	
 	def score(userTeam)
